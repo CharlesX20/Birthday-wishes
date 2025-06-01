@@ -32,11 +32,12 @@
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Fix for mobile viewport units */
+        /* Fix for mobile viewport units and safe areas */
         @media screen and (max-width: 768px) {
             body {
                 min-height: 100vh;
                 min-height: -webkit-fill-available;
+                padding-bottom: env(safe-area-inset-bottom);
             }
             
             .container {
@@ -127,6 +128,7 @@
             letter-spacing: 2px;
             transform-style: preserve-3d;
             transform: translateZ(20px);
+            -webkit-touch-callout: none; /* Prevents iOS callout */
         }
 
         .birthday-btn:hover {
@@ -335,6 +337,7 @@
             transition: all 0.4s ease;
             font-family: 'Montserrat', sans-serif;
             font-weight: 600;
+            -webkit-touch-callout: none; /* Prevents iOS callout */
         }
 
         .hug-button:hover {
@@ -361,7 +364,7 @@
         /* Audio Controls */
         .audio-controls {
             position: fixed;
-            bottom: 15px;
+            bottom: calc(15px + env(safe-area-inset-bottom)); /* Adjusts for iPhone bottom bar */
             right: 15px;
             z-index: 1000;
         }
@@ -379,6 +382,7 @@
             font-size: 1.5rem;
             color: white;
             transition: all 0.3s ease;
+            -webkit-touch-callout: none; /* Prevents iOS callout */
         }
 
         .music-btn:hover {
